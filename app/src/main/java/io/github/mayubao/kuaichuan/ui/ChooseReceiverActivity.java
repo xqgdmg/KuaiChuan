@@ -43,8 +43,7 @@ import io.github.mayubao.kuaichuan.utils.NetUtils;
 
 
 /**
- * Created by mayubao on 2016/11/28.
- * Contact me 345269374@qq.com
+ * 选择连接的设备
  */
 public class ChooseReceiverActivity extends BaseActivity {
 
@@ -60,10 +59,6 @@ public class ChooseReceiverActivity extends BaseActivity {
      */
     @Bind(R.id.radarView)
     RadarScanView radarScanView;
-//    @Bind(R.id.tab_layout)
-//    TabLayout tab_layout;
-//    @Bind(R.id.view_pager)
-//    ViewPager view_pager;
 
     /**
      * 扫描结果
@@ -74,12 +69,10 @@ public class ChooseReceiverActivity extends BaseActivity {
     List<ScanResult> mScanResultList;
     WifiScanResultAdapter mWifiScanResultAdapter;
 
-
     /**
      * 与 文件发送方 通信的 线程
      */
     Runnable mUdpServerRuannable;
-
 
     public static final int MSG_TO_FILE_SENDER_UI = 0X88;   //消息：跳转到文件发送列表UI
     public static final int MSG_TO_SHOW_SCAN_RESULT = 0X99; //消息：更新扫描可连接Wifi网络的列表

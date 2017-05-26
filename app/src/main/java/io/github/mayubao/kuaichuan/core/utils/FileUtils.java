@@ -467,7 +467,6 @@ public class FileUtils {
                 if(drawable != null){
                     bitmap = drawableToBitmap(drawable);
                 }else{
-//                    bitmap = drawableToBitmap()
                     bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
                 }
                 break;
@@ -482,13 +481,6 @@ public class FileUtils {
                 break;
             }
             case TYPE_MP3:{
-                /*
-                try {
-                    bitmap = BitmapFactory.decodeStream(new FileInputStream(new File(filePath)));
-                } catch (FileNotFoundException e) {
-                    bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon_mp3);
-                }
-                */
                 bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon_mp3);
                 bitmap = ScreenshotUtils.extractThumbnail(bitmap, 100, 100);
                 break;

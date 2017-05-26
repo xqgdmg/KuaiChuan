@@ -20,8 +20,8 @@ import io.github.mayubao.kuaichuan.core.utils.TimeUtils;
 
 
 /**
- * Created by mayubao on 2016/11/10.
- * Contact me 345269374@qq.com
+ * Socket 套接字
+ *
  */
 public class FileSender extends BaseTransfer implements Runnable {
 

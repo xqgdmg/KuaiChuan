@@ -155,8 +155,7 @@ public class FileSenderActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
-        //需要判断是否有文件在发送？
+        //需要判断是否有文件在发送
         if(hasFileSending()){
             showExistDialog();
             return;
@@ -169,7 +168,6 @@ public class FileSenderActivity extends BaseActivity {
      * 正常退出
      */
     private void finishNormal(){
-//        AppContext.FILE_SENDER_EXECUTOR.
         stopAllFileSendingTask();
         AppContext.getAppContext().getFileInfoMap().clear();
         this.finish();
@@ -202,7 +200,6 @@ public class FileSenderActivity extends BaseActivity {
      * 显示是否退出 对话框
      */
     private void showExistDialog(){
-//        new AlertDialog.Builder(getContext())
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage(getResources().getString(R.string.tip_now_has_task_is_running_exist_now))
                 .setPositiveButton(getResources().getString(R.string.str_yes), new DialogInterface.OnClickListener() {
@@ -220,7 +217,6 @@ public class FileSenderActivity extends BaseActivity {
      * 初始化
      */
     private void init(){
-//        mScanResult = getIntent().getParcelableExtra(Constant.KEY_SCAN_RESULT);
 
         tv_title.setVisibility(View.VISIBLE);
         tv_title.setText(getResources().getString(R.string.title_file_transfer));
@@ -230,18 +226,12 @@ public class FileSenderActivity extends BaseActivity {
         mFileSenderAdapter = new FileSenderAdapter(getContext());
         lv_result.setAdapter(mFileSenderAdapter);
 
-
-//        Map<String, FileInfo> dataMap = AppContext.getAppContext().getFileInfoMap();
-//        List<FileInfo> fileInfoList = new ArrayList<>(dataMap.values());
-//        Collections.sort(fileInfoList, Constant.DEFAULT_COMPARATOR2);
-
         List<Map.Entry<String, FileInfo>> fileInfoMapList = new ArrayList<Map.Entry<String, FileInfo>>(AppContext.getAppContext().getFileInfoMap().entrySet());
         mFileInfoMapList = fileInfoMapList;
         Collections.sort(fileInfoMapList, Constant.DEFAULT_COMPARATOR);
 
 
         //Android6.0 requires android.permission.READ_EXTERNAL_STORAGE
-        //TODO
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_WRITE_FILE);
@@ -249,7 +239,6 @@ public class FileSenderActivity extends BaseActivity {
             initSendServer(fileInfoMapList);//开启传送文件
         }
 
-//        AppContext.FILE_SENDER_EXECUTOR.execute();
     }
 
 
@@ -288,7 +277,6 @@ public class FileSenderActivity extends BaseActivity {
 
                 @Override
                 public void onProgress(long progress, long total) {
-                    //TODO 更新
                     //=====更新进度 流量 时间视图 start ====//
                     mCurOffset = progress - mLastUpdateLen > 0 ? progress - mLastUpdateLen : 0;
                     mTotalLen = mTotalLen + mCurOffset;
@@ -316,7 +304,6 @@ public class FileSenderActivity extends BaseActivity {
                     //=====更新进度 流量 时间视图 end ====//
 
                     System.out.println(Thread.currentThread().getName());
-                    //TODO 成功
                     fileInfo.setResult(FileInfo.FLAG_SUCCESS);
                     AppContext.getAppContext().updateFileInfo(fileInfo);
                     mHandler.sendEmptyMessage(MSG_UPDATE_FILE_INFO);
@@ -325,7 +312,6 @@ public class FileSenderActivity extends BaseActivity {
                 @Override
                 public void onFailure(Throwable t, FileInfo fileInfo) {
                     mHasSendedFileCount ++;//统计发送文件
-                    //TODO 失败
                     fileInfo.setResult(FileInfo.FLAG_FAILURE);
                     AppContext.getAppContext().updateFileInfo(fileInfo);
                     mHandler.sendEmptyMessage(MSG_UPDATE_FILE_INFO);
