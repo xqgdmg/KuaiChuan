@@ -1,69 +1,69 @@
-# KuaiChuan(仿茄子快传)
-[English](https://github.com/mayubao/KuaiChuan/blob/master/README_EN.md)
+# AnyShare
+[中文](https://github.com/mayubao/KuaiChuan/blob/master/README.md)
 
-仿茄子快传的一款文件传输应用， 涉及到Socket通信，包括TCP，UDP通信。（喜欢的给一个star, 有帮助的给一个fork， 欢迎Star和Fork ^_^）
+This is an android application like AnyShare Application which can transfer files from device to the other device, and include socket communication(tcp, udp communication). If you like it, please give me a like, and if it is helpful to you, please fork it. Welcome your start and fork ^_^.
 
-[下载](http://fir.im/6ntz) 点击下载去下载应用。
+[Download](http://fir.im/6ntz) click the Download text to download the app.
 
-## 效果预览
+## Preview
 
-### 主页 ###
+### Home ###
 ![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/home.gif)
-### 文件发送端 ###
+
+### File Sender ###
 ![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fs_1.gif)
 ![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fs_2.gif)
 ![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fs_3.gif)
-### 文件接收端 ###
+### File Receiver ###
 ![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fr_1.gif)
 ![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fr_2.gif)
 
-### 网页传(20161218新增) ###
+### Web Transfer(20161218 add) ###
 ![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/w_1.gif)
 
 ![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/w_2.jpg)
 ![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/w_3.jpg)
 
-## 原理
+## What is AnyShare
+
+AnyShare has two point to transfer files:
+
+1. transfer files from android device 2 android device.
+2. transfer files by the web.
+
+In the first point, I custome the protocol like http protocol, and every request has its header and its body.
+its header include file info, eg: length, size, path, screenshot(or thumbnail), and its body is the real file.
+
+In the second point, I custome the micro http server in android. And the file receiver can download files via web browser.
 
 
-快传有两种方式可以传输文件：
+## Test
+（Test must be in reallly Android device）
+Runnig normally in android devices. eg Meilan 2, Huawei SCL-TL00, Vivo xs1.
 
-1. Android应用端发送到Android应用端（必须安装应用）
-2. 通过Web浏览器来实现文件的传送 （不必安装应用）
-
-第一种方式主要是是通过设备间发送文件。 文件传输在文件发送端或者是文件接收端通过自定义协议的Socket通信来实现。由于文件接收方和文件发送方都要有文件的缩略图，这里采用了header + body的自定义协议, header部分包括了文件的信息（长度，大小，缩略图）， body部分就是文件。
-
-第二种方式主要是在android应用端架设微型Http服务器来实现文件的传输。这里可以用ftp来实现，为什么不用ftp呢？因为没有缩略图，这是重点！
-
-
-## 测试
-
-（必须在真机下测试）
-在Android测试机 分别是 魅蓝2 与  华为 SCL-TL00， Vivo xs1 运行正常
-
-## 感谢
+## Thanks
 
 google: <http://www.google.com>
 
 stackoverflow  <http://stackoverflow.com/>
 
 
-## 版本
+## Version
 
 ### v1.0 ###
-完成了Android端到Android端的文件传输
+Complete files transmission from android device to the other android device.
 
 ### v1.1 ###
-完成了网页传模块的功能
+Complete files transmission via web browser
 
+## Issue
 
-## issue
 QQ:345269374
 
 Email:345269374@qq.com
 
-
 ## License
+
     Copyright 2016 mayubao
 
     Licensed under the Apache License, Version 2.0 (the "License");
